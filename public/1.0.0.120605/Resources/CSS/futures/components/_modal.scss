@@ -1,0 +1,7 @@
+﻿.modal {
+	.popup-content {
+		&:before { background-image:url("../../Images/newhome/svg/modal-bg-frame-mobile-left.svg");;
+			@media (min-width:37.5rem){ background-image:url("../../Images/newhome/svg/modal-bg-frame-left.svg"); }
+		}
+	}
+}

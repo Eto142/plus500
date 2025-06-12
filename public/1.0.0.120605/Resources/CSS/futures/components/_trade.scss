@@ -1,0 +1,61 @@
+﻿@use "sass:math";
+//Trade
+.trade { 
+  &-section { position: relative; margin-bottom: $spacer * 5;
+    @include media-breakpoint-up(md) { margin-bottom: $spacer * 9; }
+    @include media-breakpoint-down(sm) { padding-top: $spacer * 11.25; padding-bottom: $spacer * 4.25; }
+    .plus-bg {
+      &-small { width: 5.375rem; height: 5.375rem; top:6%; #{$align-def}:4%;
+          @include media-breakpoint-down(sm) { 
+              &.small-only { width: 4rem; height: 4rem; top:12%; #{$align-opp}:6%; #{$align-def}:auto; } 
+          } 
+          @include media-breakpoint-up(md) { top:45%; #{$align-def}:2%; }
+      }
+      &-medium { width: 9.125rem; height: 9.125rem; top:100%; #{$align-opp}:6%;
+          @include media-breakpoint-up(md) { top:95%; }
+       }
+      &-xlarge { width:34rem; height: 34rem; top:-30%; #{$align-def}:-60%; display: none;  
+        @include media-breakpoint-up(lg) { display: block; } 
+      }
+    } 
+  }
+  &-title-bg { text-align: center; position: relative; 
+     @include media-breakpoint-up(lg) { padding-top: $spacer * 12.5; padding-bottom: $spacer * 3.5; }
+  } 
+  &-title { font-size: 1.375rem; color:$dark-blue; font-weight: $font-weight-medium;
+      strong { font-weight: $font-weight-bold; }
+      @include media-breakpoint-up(md) { font-size: 1.875rem; } 
+  }
+  &-data { position: relative; border-radius: $border-radius-large; box-shadow: none; 
+    &:before, &:after { content: ""; position: absolute; z-index: 0; display: block; border-radius: $border-radius-large; }
+    &:before { padding: 1px; border: 1px solid $white; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(200deg, $white 50%, $cfd-blue 100%); }
+    &:after { top: 3px; bottom: 3px; #{$align-def}: 3px; #{$align-opp}: 3px; z-index: 0; border-radius: 1.25rem; background: $white; }
+    @include media-breakpoint-up(md) { box-shadow: 0 34px 68px rgba(0, 0, 0, 0.13); 
+       &:before { border-width: 10px; padding: 10px; background-image: linear-gradient(45deg, $white 50%, $cfd-blue 100%); }
+       &:after { top: 11px; bottom: 11px; #{$align-def}: 11px; #{$align-opp}: 11px; border-radius: ($border-radius-large * 0.5); }
+     }
+  } 
+  &-sub-title { position: absolute; z-index: 1; top:auto; bottom: -1rem; #{$align-def}: 2rem; #{$align-opp}:auto; background-color: $cfd-blue; color: $white; font-size: 1rem; padding: ($spacer * .625) $spacer; 
+    border-radius: $border-radius-large * 2; box-shadow: none; 
+    @include media-breakpoint-up(lg) { top: -1.5rem; bottom: auto; #{$align-opp}: -4.5rem; #{$align-def}:auto; font-size: 1.125rem; padding: ($spacer * .85) ($spacer * 1.5); box-shadow: 0 44.6489px 57.923px rgba(24, 74, 181, 0.34); } 
+    strong { font-weight: $font-weight-regular; } 
+  }
+  &-items { position: relative; z-index: 1; text-align: center; padding-top: $spacer * 1.5; padding-bottom: $spacer * 2; 
+    @include media-breakpoint-up(md) { padding-top: $spacer * 4.5; padding-bottom: 0; } 
+  }   
+  &-item { font-size: 1.375rem; font-weight: $font-weight-light; color:$dark-blue; line-height: 1.1; padding: $spacer;
+    strong { font-weight: $font-weight-medium; }
+    span { font-size: 1.725rem; display: block } 
+    @include media-breakpoint-up(md) { 
+          font-size: 1.875rem;
+          span { font-size: 3.125rem; }
+     } 
+  }
+  .item-anim-list { position: relative; overflow: hidden; min-height: 6rem;
+    @include media-breakpoint-up(md) { min-height: 11rem; } 
+   .item-anim, .item-anim-second { position: absolute; left: 0; right:0; opacity: 0; 
+      &:first-child { opacity: 1; }
+   }
+  }
+  .disclaimer-note { color: $color-main; margin-top: $spacer * 3; text-align: center; }
+}   

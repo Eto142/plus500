@@ -1,0 +1,38 @@
+﻿.trading {            
+  &-section { position: relative; padding-top: $spacer * 3; padding-bottom: $spacer * 4; color: $white; text-align: center; 
+    @include media-breakpoint-up(md) { padding-top: $spacer * 8.25; padding-bottom: $spacer * 8.25; background-color: $dark-blue; }
+    @include media-breakpoint-down(md) { 
+      &:before, &:after { content: ""; position: absolute; width: 100%; z-index: -1; display: block; border-radius: $border-radius-large;
+          border-top-#{$align-opp}-radius: 0; border-bottom-#{$align-opp}-radius: 0; transform: $card-skew;
+        }
+      &:before { padding: 6px; border: 6px solid $dark-blue; border-#{$align-opp}: none; top: 0; left: 0; right: 0; bottom: 0;
+          background-image: linear-gradient(180deg, $turquoise 0%, $dark-blue 20%);
+        } 
+      &:after { top: 7px; bottom: 7px; #{$align-def}: 7px; #{$align-opp}: 0; border-radius: $border-radius-medium;
+          background: $card-gradient; border-top-#{$align-opp}-radius: 0; border-bottom-#{$align-opp}-radius: 0;
+        }  
+     }
+     
+    .title-section { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; 
+        @include media-breakpoint-up(md) {  }
+        span { margin-#{$align-opp}: 0; flex-basis: 100%;
+            @include media-breakpoint-up(md) { flex-basis: auto; margin-#{$align-opp}: $spacer; }
+         }
+        img { height: 2rem; width: auto; margin-#{$align-def}: $spacer * .5; 
+          @include media-breakpoint-up(md) { height: 3.75rem; margin-#{$align-def}: $spacer; }
+        }
+     }
+    .plus-bg { z-index: 0; display: none;
+      &-small { width: 9.5rem; height: 9.5rem; top:50%; #{$align-opp}:6%; }
+      &-medium { width: 17.5rem; height: 17.5rem; top:0; #{$align-opp}:-6%; }
+      &-large { width: 17.5rem; height: 17.5rem; top:15%; #{$align-def}:-6%; }
+      @include media-breakpoint-up(xl) { display: block; } 
+    } 
+    .items-icon-group { 
+      @include media-breakpoint-up(md) { margin-top: $spacer * 3; }
+    }
+    .button-group { margin-bottom: 0; 
+        @include media-breakpoint-up(lg) { margin-bottom: $spacer * 8.25; }
+    } 
+  }
+}

@@ -1,0 +1,104 @@
+﻿@use "sass:meta";
+$sponsorships-literal:"sponsorships";
+$featured-sponsorships:(bulls, legia, young-boys);
+@mixin sponsorships-logics($sponsorships-literal) {
+	&-item { position:relative; z-index:0; }
+}
+.#{$sponsorships-literal} {
+	&-section { text-align:center; max-width:94%; margin:0 auto $spacer * 3; 
+		@include media-breakpoint-up(xl) { max-width:75rem; margin-bottom: $spacer * 8; }
+		.#{$sponsorships-literal} {
+			&-main-row { justify-content:space-around; position:relative; flex-wrap:nowrap; margin-top:$spacer * 2; 
+				@include media-breakpoint-up(md) { margin-top:$spacer * 5; }
+			}
+			&-item { display:flex; justify-content:center; flex:0 1 30%;
+				@include media-breakpoint-up(md) { flex:0 1 25%; }
+				&:hover, &:focus-within { z-index: 5!important; }
+				&-image { display:flex; align-items:center; flex:1 1 auto; transform:scale(1.25); transition:all .3s ease-in-out; transform-origin:center center; 
+					img { flex: 1 1 100%; width: 100%; }
+				}
+				&-logo { position:relative; z-index:1; display:flex; flex:0 0 auto; justify-content:flex-end; align-items:center; flex-direction:column; margin-top:$spacer; 
+					&-image{ display:inline-flex; justify-content:center; }
+					img { margin:auto; max-width:3rem; max-height:3.5rem;
+						&:first-child { display:block; }
+						&:nth-child(2) { display:none; }
+						@include media-breakpoint-up(md) { max-width:5.5rem; max-height:7rem;
+							&:first-child { display:none; }
+							&:nth-child(2) { display:block; }
+						}
+					}
+					span { color:$dark-blue; font-size:.75rem; margin-top:$spacer * .5; padding:0; line-height:$line-height-small;
+						@include media-breakpoint-up(md){ color:$light-grey; font-size:1.25rem; margin-top:$spacer; padding:0 $spacer; }
+					}
+				}
+				&-link { position:relative; display:flex; flex-direction:column; text-decoration:none;
+					&:focus { outline:none; }
+					@include media-breakpoint-up(md) {
+						&:hover {
+							.#{$sponsorships-literal}-item { z-index:5; }
+							.#{$sponsorships-literal}-item-image { transform:scale(1.5); }
+							.#{$sponsorships-literal}-item-logo { 
+								img {
+									&:first-child { display:block; }
+									&:nth-child(2) { display:none; }
+								}
+								span { color:$dark-blue; }
+							}
+						}
+					}
+				}
+			}
+		}
+		.#{$sponsorships-literal}-wrapper {
+			@each $featured-sponsorship in $featured-sponsorships {
+				&[data-featured-sponsorship="#{$featured-sponsorship}"] {
+					.#{$sponsorships-literal} {
+						@include sponsorships-logics($featured-sponsorship);
+						&-item {
+							&-#{$featured-sponsorship} { justify-content:center; 
+								@include sponsorships-logics($featured-sponsorship);
+								> a {
+									&:focus-visible { outline:-webkit-focus-ring-color auto 1px; } // set outline for webkit based user agents
+									&:before { display:none; }
+									> .sponsorship-logo-back { display:inline-block; height:100%; left:0; right:0; margin:0 auto; position:absolute; top:0; z-index:-1; }
+									> img { filter:none; }
+								}
+							}
+							&-logo {
+								&-#{$featured-sponsorship} { z-index:1;
+									span { direction:ltr; // force LTR for sponsorship team, since it's only in english
+										@include media-breakpoint-up(md){ font-size:1.25rem; }
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@if meta.variable-exists(sponsorshipType) {
+	.#{$sponsorships-literal} {
+		@if ($sponsorshipType == "futures" or $sponsorshipType == "japan"){
+			&-section { padding-top:$spacer * 2;
+				@include media-breakpoint-up(xl){ padding-top:$spacer * 5; margin-bottom:3rem; }
+				@if ($sponsorshipType == "futures") {
+					.title-section { color:$dark-blue; font-size:1.375rem; font-weight:$font-weight-light; margin-bottom:0;
+						@include media-breakpoint-up(md){ font-size:2rem; }
+						strong { color:$light-blue; font-size:1.625rem; font-weight:$font-weight-bold;
+							@include media-breakpoint-up(md){ font-size:3rem; }
+						}
+					}
+				}
+				.#{$sponsorships-literal}-header {
+					@if ($sponsorshipType == "futures") { margin-bottom:$spacer * 2.5; } 
+					@if ($sponsorshipType == "japan") { color:$dark-blue; }
+					@include media-breakpoint-up(md){ margin-bottom:$spacer * 4.5; 
+						p { font-size:1.5rem; }
+					}
+				}
+			}			
+		}
+	}
+}

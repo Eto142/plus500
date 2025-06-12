@@ -1,0 +1,46 @@
+﻿/// <reference path="../../../../node_modules/bootstrap/scss/bootstrap.scss" />
+/// <reference path="../_variables.scss" />
+$button-shadow:0 1rem 1.5rem scale-color($cfd-blue, $alpha:-70%);
+
+.market {
+  &-section { position:relative; margin-top:$spacer * 4.5;
+    @include media-breakpoint-up(xl){ padding-top:$spacer * 3.5; }
+    .free-content { font-weight:$font-weight-normal; 
+        @include media-breakpoint-up(md){ font-size:1.375rem; font-weight:$font-weight-light; }
+    }
+    strong { font-size:1.25rem; }
+    .plus-bg { display:none;
+            &-small { display:block; width:5.25rem; height:5.25rem; top:-25%; left:0;
+                @include media-breakpoint-up(xl){ top:70%; left:6%; } 
+            } 
+            &-medium { width:15rem; height:15rem; top:10%; right:2%; 
+                @include media-breakpoint-up(xl){ display:block; }
+                @include media-breakpoint-up(xxl){ right:6%; }
+             } 
+            &-large { width:20rem; height:20rem; top:-5%; left:4%;
+                @include media-breakpoint-up(xl){ display:block; } 
+                @include media-breakpoint-up(xxl){ left:15%; }
+            }  
+      } 
+  }
+
+  &-menu { overflow:auto; padding:($spacer * 2) 0; margin:0 (-$spacer); 
+      @include media-breakpoint-up(md){ overflow:visible; margin:0 auto; }
+      ul { display:flex; flex-wrap:nowrap; justify-content:flex-start; list-style:none; margin:0; padding:0;
+          @include media-breakpoint-up(md){ flex-wrap:wrap; justify-content:center; } 
+          @include media-breakpoint-up(xl){ justify-content:space-around; } 
+            li { flex:0 0 9.5rem; display:flex; 
+            @include media-breakpoint-up(md){ flex:1 1 auto; max-width:14rem; }
+                  a, button { display:flex; flex:1 1 auto; flex-direction:column; justify-content:center; align-items:center; color:$dark-blue; font-size:1.125rem; font-weight:$font-weight-bolder; text-decoration:none;
+                  margin:$spacer * .375; padding:$spacer ($spacer * .5); background-color:$white; border:1px solid $white; border-radius:$radius; line-height:1; box-shadow:$button-shadow;
+                  &.active, &:hover, &:focus { color:$medium-blue; border-color:$medium-blue; box-shadow:$button-shadow; }
+                   @include media-breakpoint-up(md){ flex-direction:row; margin:$spacer * .5; padding:($spacer * 1.25) ($spacer * .75); border-color:$dark-blue; box-shadow:none; }
+                  .icon { margin-right:0; margin-bottom:$spacer * .25; font-size:1.5rem; flex:0 0 auto; 
+                      @include media-breakpoint-up(md){ margin-right:$spacer * .5; margin-bottom:0; font-size:1.25rem; }
+                  }
+                  span { flex:0 0 auto; white-space:nowrap; }
+                }
+           }
+      }
+  } 
+}

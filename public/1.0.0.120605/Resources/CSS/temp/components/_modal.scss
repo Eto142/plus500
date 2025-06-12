@@ -1,0 +1,44 @@
+﻿.modal { --bs-body-bg:transparent; --bs-modal-box-shadow:0; --bs-modal-border-width:0; --bs-modal-header-border-width:0; --bs-modal-padding:#{$spacer $spacer * 2 $spacer * 2}; --bs-modal-header-padding:#{$spacer * 2 $spacer * 2 0};
+	@include media-breakpoint-up(md){ --bs-modal-padding:#{$spacer $spacer * 2 $spacer * 4}; --bs-modal-header-padding:#{$spacer * 2}; }
+	&-backdrop { background-color:scale-color($dark-blue, $alpha:-20%); } // general backdrop for all modals on website
+	.popup {
+		&-content {
+			&:before { background-image:url("../Images/newhome/svg/modal-bg-frame-mobile-#{$align-def}.svg"); background-repeat:no-repeat; background-position:50% 0; background-size:100% 100%; position:absolute; left:0; right:0; bottom:0; width:100%; height:100%; margin:auto; top:0; z-index:-1; content:"";
+				@media (min-width:37.5rem){ background-image:url("../Images/newhome/svg/modal-bg-frame-#{$align-def}.svg"); }
+			}
+		}
+		&-body { min-height:24rem;
+			svg { margin:0 auto; display:block; }
+		}
+	}
+	.plus-bg {
+		&.first { display:none;
+			@include media-breakpoint-up(lg){ display:block; #{$align-def}:2rem; top:2rem; width:4.5rem; height:4.5rem; }
+		}
+		&.second { position:relative; width:2.625rem; height:2.625rem; margin-#{$align-def}:auto; margin-bottom:2rem;
+			@include media-breakpoint-up(md){ position:absolute; top:auto; #{$align-opp}:2rem; bottom:4rem; margin-bottom:0; }
+		}
+	}
+	.image-wrapper { text-align:center; }
+	.main-column { max-height:15rem; overflow-y:auto; margin-bottom:$spacer * 2; margin-top:$spacer * 2;
+		@include media-breakpoint-up(md){ max-height:none; overflow-y:initial; }
+		p { font-size:1.125rem; font-weight:$font-weight-regular;
+			&:only-child { margin-bottom:0; }
+			a { color:$dark-blue; }
+		}
+	}
+	.cta-wrap { display:flex; flex-wrap:wrap; justify-content:center; text-align:center; margin-bottom:$spacer * 2;
+		.button { font-size:1.125rem; margin:$spacer * .5; transition:none;
+			@include media-breakpoint-up(md){ font-size:1.25rem; }
+		}
+	}
+
+	// Specific Overrides
+	&.na-country-modal {
+		img { display:block; margin:0 auto; }
+		.btn.na-link { text-decoration:underline; flex:0 0 100%;
+			&:hover { text-decoration:none; }
+		}
+		.cta-wrap { flex-direction:column; align-items:center; padding-bottom:$spacer; }
+	}
+}

@@ -1,0 +1,13 @@
+﻿.support-link { align-items:center; display:inline-flex; text-align:center; color:$white;
+	.icon-users { width:1.5rem; height:1.5rem; font-size:1.25rem; }
+}
+.side-support-link { bottom:100%; right:.5rem; position:absolute; margin-bottom:$spacer * .5; transition-timing-function:ease-in; transition-delay:0s; transition-duration:.5s;
+	height:3.5rem; width:3.5rem; background-color:$medium-blue; border-radius:.75rem; flex-direction:column; justify-content:center; padding:$spacer * .5; text-align:center; z-index:3; text-decoration:none;
+	// handle those long languages
+	.lang-bg &,.lang-da &,.lang-el &,.lang-no &,.lang-ru &,.lang-sk &,.lang-sl &,.lang-sv & {
+		height:4rem; width:4.25rem;
+	}
+	.lang-hu &,.lang-nl &,.lang-et & { height:4rem; width:5rem; }
+	@include media-breakpoint-up(md) { transition-duration:.75s; }
+	.text { font-size:.625rem; line-height:1.2; }
+}

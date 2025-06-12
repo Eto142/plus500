@@ -1,0 +1,36 @@
+﻿// COOKIE BANNER
+$cookie-banner-text-color:#3e3e3e;
+
+.sticky-cookie-wrapper { background:$white; box-shadow:0 -.5rem 2rem 0 scale-color($dark-blue, $alpha:-90%); max-height:20rem; position:relative; overflow-y:hidden; transition:max-height .75s ease-out; z-index:2;
+    &.cookie-out { max-height:0; }
+    .image-wrapper { text-align:center;
+        @include media-breakpoint-up(md){ margin-bottom:0; width:3rem; flex:0 1 auto; }
+        img { display:inline-block; margin:0 auto; max-width:3rem; }
+    }
+    .cookie-banner {
+        &-wrapper, &-content { @include media-breakpoint-up(md){ display:flex; } }
+        &-wrapper { padding-bottom:$spacer * .75; padding-top:$spacer * .75; }
+        &-content { @include media-breakpoint-up(md){ flex:1 1 auto; align-items:center; } }
+    }
+    p { color:$cookie-banner-text-color; margin:0; padding-left:$spacer; padding-right:$spacer * 1.5; font-size:.8125rem; line-height:$line-height-small; font-weight:$font-weight-regular;
+        @include media-breakpoint-up(md){ font-size:.9375rem; }
+        a { color:$white; text-decoration:underline; -webkit-tap-highlight-color:transparent;
+            @include media-breakpoint-up(md){ white-space: nowrap; }
+            &:hover, &:focus { text-decoration:none; }
+        }
+    }
+    .actions-wrapper { display:flex; justify-content:center; flex:0 1 auto;
+        @include media-breakpoint-up(md){ margin-left:auto; }
+    }
+    .button { font-size:1rem; transition:none;
+        @include media-breakpoint-up(md){ font-size:1.125rem; margin-top:0; height:3rem; width:auto; min-width:10rem; }
+        &.accept-cookies { margin-left:$spacer; border:1px transparent solid;
+            &:hover, &:focus { background:$white; color:$medium-blue; border-color:$medium-blue; border-width:2px; cursor:pointer; }
+            &:only-child { margin-left:auto; margin-right:auto; }
+        }
+    }
+    &.dark { background-color:$cookie-banner-text-color;
+        p { color:$white; }
+    }
+}
+// END COOKIE BANNER

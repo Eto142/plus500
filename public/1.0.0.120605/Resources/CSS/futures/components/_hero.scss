@@ -1,0 +1,250 @@
+﻿// Main Banner
+$strip-bg-color: #202446;
+.main-banner { position:relative; display:flex; flex-direction:column; max-height:60rem; height:var(--composer-vh, 100vh); background-color:$dark-blue; box-shadow:$card-shadow; overflow:hidden; transition:height .3s ease;
+	@include media-breakpoint-up(md){ height:auto; }
+	&:before, &:after { margin-bottom:$spacer * -4.5; flex:1 1 100%; z-index:0; animation:fadeIn 1s; background-repeat:no-repeat;
+		@include media-breakpoint-up(md){ position:absolute; top:0; #{$align-opp}:0; width:100%; height:100%; margin-bottom:0; }
+	}
+	.plus-bg { z-index:0;
+		&-small { width:6rem; height:6rem; top:-15%; #{$align-def}:auto; #{$align-opp}:-2%; opacity:.5;
+			@include media-breakpoint-up(md){ top:80%; #{$align-opp}:-2%; opacity:1; }
+			@include media-breakpoint-up(xxl){ top:20%; #{$align-def}:-14%; }
+		}
+		&-medium { width:10rem; height:10rem; top:-100%; #{$align-def}:-4%; opacity:.5;
+			@include media-breakpoint-up(lg){ top:-10%; #{$align-def}:0; opacity:1; }
+		}
+		&-large { width:28rem; height:28rem; top:50%; #{$align-def}:-10%; display:none;
+			@include media-breakpoint-up(xxl){ display:block; }
+		}
+	}
+	&.hero-banner {
+		&:before { background-image:url("../../images/futures/img/us-hero-bulls-banner.webp"); width:100%; right:0; background-size:cover; background-position:35% 0; content:''; 
+			@include media-breakpoint-up(md){ background-size:65% auto; background-position:135% 100%; }
+			@include media-breakpoint-up(lg){ background-size:auto 125%; background-position:right -14rem top -5.5rem; }
+			#{$old-browsers-classes} { background-image:url("../../images/futures/img/us-hero-bulls-banner.png"); }
+		}
+		.main-banner-wrap { direction:ltr; }
+	}
+	&.new-banner {
+		&:before { margin-top:$spacer * -2; background-image:$banner-image-gradient-small-device, url("../../images/futures/img/home-banner.webp"); width:100%; right:0; background-size:cover; background-position:45% 0;
+			@include media-breakpoint-up(md){ margin-top:0; background-image:none, url("../../images/futures/img/home-banner.webp"); background-size:auto 80%; background-position:right -18vw bottom 0; }
+			@include media-breakpoint-up(lg){ background-position:right -10vw bottom 0; }
+			@include media-breakpoint-up(xl){ background-size:auto 85%; background-position:right -6vw bottom 0; }
+			@include media-breakpoint-up(xxl){ background-size:auto 90%; background-position:right -9vw bottom 0; }
+			@include media-breakpoint-up(xxxl){ background-size:auto 100%; background-position:right -6vw bottom -2rem; }
+			#{$old-browsers-classes} { background-image:$banner-image-gradient-small-device, url("../../images/futures/img/home-banner.png");
+				@include media-breakpoint-up(md){ background-image:none, url("../../images/futures/img/home-banner.png");}
+			}
+		}
+		.main-banner {
+			&-slogan { @include media-breakpoint-up(md){ font-weight:$font-weight-bold; } }
+			&-wrap { @include media-breakpoint-up(xxl){ min-height:42rem; } }
+			&-bulls { @include media-breakpoint-up(md){ margin-top:$spacer * 2; } }
+			&-bulls-name { max-width:10.5rem; height:auto; display:flex; flex-direction:column; margin-top:$spacer * .75; margin-bottom:$spacer * .25;
+				@include media-breakpoint-up(md){ max-width:18.5rem; }
+			}
+		}
+	}
+	&-wrap { padding:0; display:flex; flex-direction:column; justify-content:flex-end; position:relative; z-index:1; max-width:83.75rem;
+		@include media-breakpoint-up(md){ flex-direction:row; justify-content:flex-start; align-items:center; }
+		@include media-breakpoint-up(xxl){ min-height:50rem; }
+	}
+	&-logo { display:none; 
+		@include media-breakpoint-up(md){ display:block; max-width:12.5rem; margin:0 auto ($spacer * 2); margin-#{$align-def}:0; }
+		@include media-breakpoint-up(lg){ max-width:17.5rem; margin:0 auto; }
+	}
+	&-content { flex:0 0 100%; position:relative; z-index:0; color:$white; text-align:center; padding:($spacer * 3) $spacer ($spacer * 2);
+		@include media-breakpoint-up(md){ display:flex; flex-direction:column; text-align:#{$align-def}; padding:($spacer * 2) $spacer; }
+		@include media-breakpoint-up(lg){ text-align:center; }
+		.blue-card-bg { transform:skew(0deg, -2deg); min-height:26rem; height:100%;
+			@include media-breakpoint-up(md){ display:none; }
+		}  
+	}
+	&-title, &-subtitle { display:flex; justify-content:center; flex-direction:column; font-size:1.5rem; text-transform:uppercase; font-weight:$font-weight-light; margin-bottom:0;
+		@include media-breakpoint-up(md){ font-size:2.5rem; line-height:1; }
+		@include media-breakpoint-up(lg){ font-size:3rem; }
+		@include media-breakpoint-up(xl){ font-size:3.75rem; }
+		strong { color:$light-blue; font-weight:$font-weight-bold; font-size:2.5rem; line-height:1;
+			@include media-breakpoint-up(md){ font-size:4.375rem; }
+			@include media-breakpoint-up(lg){ font-size:5rem; }
+			@include media-breakpoint-up(xl){ font-size:6.5rem; }
+		}
+	}
+	&-subtitle { color:$light-blue; font-weight:$font-weight-bold; font-size:2.5rem; line-height:1;
+		@include media-breakpoint-up(md){ font-size:4.375rem; }
+		@include media-breakpoint-up(lg){ font-size:5rem; }
+		@include media-breakpoint-up(xl){ font-size:6.5rem; }
+	}
+	&-slogan { font-size:1rem; font-weight:$font-weight-light; line-height:$line-height-small; padding:0 $spacer; margin:$spacer auto ($spacer * .5);
+		@include media-breakpoint-up(md){ font-size:1.25rem; padding-#{$align-def}:0; padding-#{$align-opp}:20%; }
+		@include media-breakpoint-up(lg){ font-size:1.75rem; padding-#{$align-opp}:$spacer; }
+	}
+	&-desc { font-size:1rem; letter-spacing:$letter-spacing; margin:$spacer auto;
+		@include media-breakpoint-up(md){ font-size:1.125rem; }
+	}
+	&-buttons, .cta-wrap { margin-top:$spacer; display:flex; flex-direction:row; justify-content:center; flex-wrap:wrap; width:100%;
+		.button { margin:($spacer * .3125); height:2.75rem; font-size:1rem; flex:1 1 40%; max-width:20rem;
+			@media (orientation: portrait) { flex:1 1 100%; }
+			&.hollow { border-color:transparent; } 
+		}
+		@include media-breakpoint-up(md){ max-width:20rem;
+			.button { height:3.25rem; margin-#{$align-def}:0; flex:1 1 auto; 
+				&:last-child { margin-#{$align-opp}:($spacer * .3125); }
+			}
+		}
+		@include media-breakpoint-up(lg){ max-width:100%; margin-top:$spacer * 2; 
+			.button{  height:4rem; font-size:1.25rem; margin-#{$align-def}:($spacer * .3125); 
+				@media (orientation: portrait) { flex:1 1 40%; }
+			}
+	 	}
+		.cta-wrap { margin-top:0;
+			@include media-breakpoint-up(md){ text-align:#{$align-def};}
+			@include media-breakpoint-up(lg){ text-align:center; }
+		}
+	}
+	&-image { flex:0 1 50%; order:0; width:100%; position:relative; 
+		@include media-breakpoint-up(md){ flex:0 0 auto; width:auto; 
+			img { position:static; height:100%; }
+		}
+		img { object-fit:cover; width:100%; height:auto; position:absolute; bottom:-5rem; z-index:-1; margin:0 auto; left:0; right:0; }
+	}
+	&-bulls { position:relative; margin-top:$spacer * .75; display:flex; flex-direction:column; justify-content:center; align-items:center;
+		@include media-breakpoint-up(md){ margin-top:$spacer * 3.75; align-items:flex-start; }
+		@include media-breakpoint-up(lg){ margin-top:$spacer * 3.75; align-items:center; }
+		&-wrap { display:flex; justify-content:center; align-items:center; }
+		&-logo { flex:0 0 auto; width:2rem; height:auto; margin-#{$align-opp}:$spacer * .625; margin-#{$align-def}:$spacer * .625;
+			@include media-breakpoint-up(md){ width:4.375rem; margin-#{$align-opp}:$spacer * 1.125; margin-#{$align-def}:0;
+				&:last-child { display:none; }
+			}
+		}
+		&-name { display:flex; flex-direction:column; max-width:10.5rem; margin-top:$spacer * .75; margin-bottom:$spacer * .25;
+			@include media-breakpoint-up(md){ max-width:18.5rem; }
+			@include media-breakpoint-up(lg){ max-width:29.5rem; height:4.25rem; width:auto; }
+		}
+		&-slogan { font-size:.75rem; letter-spacing:$letter-spacing;
+			@include media-breakpoint-up(md){ font-size:1.125rem; }
+			@include media-breakpoint-up(lg){ font-size:1.25rem; }
+		}
+	}
+	&-link { position:relative; z-index:1; display:flex; flex-direction:row; align-items:center; justify-content:center; width:100%; height:3.5rem; padding:($spacer * .75) 10%; 
+		color:$dark-blue; background-color:$white; font-size:1rem; line-height:$line-height-small; text-decoration:none; transition:all .3s linear; 
+		@include media-breakpoint-up(md){ font-size:1.25rem; height:4rem; }
+		&:hover{ color:$white; background-color:$light-blue; }
+		&-icon { flex:0 0 auto; width:1.5rem; height:1.5rem; margin:0; margin-#{$align-opp}:$spacer * .75; font-size:1.5rem; 
+			&.trade-sniper-icon { width:3.75rem; height:2.5rem; }
+		}
+		i { margin-#{$align-def}:$spacer; font-weight:$font-weight-bold; opacity:.8; }
+		
+		&.trade-sniper-link { text-align:center; padding:($spacer * .75) $spacer; 
+			&:hover{ color:$white; background-color:$light-blue; 
+				.trade-sniper-icon svg path{ fill:$white; }
+			}
+			@include media-breakpoint-up(md){ font-size:1.5rem; }
+		}
+		&.strip-bg { height:4rem; color:$white; text-align:center; font-size:.75rem; background-color:$strip-bg-color; background-image:url("../../images/hero_banners/strip-main-bg.webp"), none; background-position:right -13rem center; background-size:auto 4rem; background-repeat:no-repeat;
+			@include media-breakpoint-up(md){ font-size:1.25rem; background-image:url("../../images/hero_banners/strip-main-bg.webp"), url("../../images/hero_banners/strip-side-bg.webp"); background-position:right -9rem center, left 0 center; background-size:auto 100%; }
+			@include media-breakpoint-up(xxxl){ background-position:right center, left center; }
+			a { color:$white; text-decoration:none; }
+		}
+	}
+	&-futures-buttons { margin-top:$spacer * 3; }
+	&-futures-button { position:relative; background:$medium-blue; border-top-#{$align-opp}-radius:0;
+		img { opacity:.8; width:10.5rem; height:auto; 
+			@include media-breakpoint-up(md){ width:12.5rem; }
+		}
+		span{ font-size:.875rem; color:$medium-blue; text-transform:uppercase; padding:($spacer * .375) ($spacer * .75); background-color:$white; border-top-left-radius:$border-radius-large * 0.5; border-top-right-radius:$border-radius-large * 0.5; position:absolute; #{$align-opp}:0; bottom:100%; 
+			@include media-breakpoint-up(md){ font-size:1rem; }
+		} 
+	}
+	 
+	&.financial-banner {
+		$banner-bg: "../../images/futures/img/financial-banner-buildings";
+		$banner-bg-mobile: "../../images/futures/img/financial-banner-buildings-mobile";
+		--composer-vh:32rem;
+		&:before { background-size:cover; background-position:top center; background-image:url("#{$banner-bg-mobile}.webp"); right:0; content:'';
+			#{$old-browsers-classes} { background-image:url("#{$banner-bg-mobile}.png"); }
+			@include media-breakpoint-up(md){ background-size:auto 100%; background-position:right -20vw top 0; background-image:url("#{$banner-bg}.webp");
+				#{$old-browsers-classes} { background-image:url("#{$banner-bg}.png"); }
+			}
+			@include media-breakpoint-up(lg){ background-position:100% 0; }
+		}
+		.plus-bg { z-index:0;
+			&-small { display:none;
+				@include media-breakpoint-up(md){ display:block; } 
+			}
+		}
+		.main-banner {
+			&-wrap {
+				@include media-breakpoint-up(md){ min-height:32rem; }
+				@include media-breakpoint-up(xxl){ min-height:42rem; }
+			}
+			&-slogan { max-width:none; }
+		}
+	}
+	&.inner-banner { box-shadow:none;
+		&:before { animation:none; width:100%; right:0; background-size:cover; background-position:60% 0; background-image:$banner-image-gradient-small-device;
+			@include media-breakpoint-up(md){ width:60%; background-position:50% 0; background-image:$banner-image-gradient; }
+		}
+		.main-banner {
+			&-title { font-size:1.75rem;
+				@include media-breakpoint-up(md){ font-size:3rem; }
+				@include media-breakpoint-up(lg){ font-size:4rem; }
+				@include media-breakpoint-up(xl){ font-size:4.5rem; }
+				strong { @include media-breakpoint-up(xl){ font-size:5.5rem; } }
+			}
+			&-subtitle { @include media-breakpoint-up(xl){ font-size:5.5rem; } }
+			&-slogan { max-width:none; font-size:1.125rem; padding:0;
+				@include media-breakpoint-up(md){ font-size:1.25rem; padding:0 $spacer; }
+				@include media-breakpoint-up(lg){ font-size:1.75rem; }
+			}
+			&-wrap { min-height:auto;
+				@include media-breakpoint-up(md){ min-height:32rem; }
+				@include media-breakpoint-up(xxl){ min-height:40rem; }
+			}
+			&-content { bottom:0; align-items:center; justify-content:center; text-align:center;
+				.blue-card-bg { 
+					&:after { background:$dark-blue; }
+				}
+			}
+		}
+		.main-banner-buttons, .cta-wrap { align-items:center; text-align:center; max-width:100%; 
+			@include media-breakpoint-up(md){ 
+				.button { margin-#{$align-def}:($spacer * .3125); }
+			}
+		} 
+	} 
+	&.gradient-banner { overflow:visible; box-shadow:none; margin-bottom:2rem;
+		&:after { animation:none; content:""; position:absolute; bottom:0; top:auto; left:0; width:100%; height:6rem; margin-bottom:0;
+			background:linear-gradient(to bottom, scale-color($dark-blue, $alpha:-100%) 0, $dark-blue 35%, $white 100%);
+			@include media-breakpoint-up(md){ height:60%; bottom:-20%; }
+		}
+		@include media-breakpoint-up(md){ margin-bottom:0; }
+	}
+	.close { cursor:pointer; z-index:2; position:absolute; #{$align-opp}:1rem; top:1.75rem; width:1.5rem; height:1.5rem; opacity:.75;
+		@include media-breakpoint-up(md){ width:2rem; height:2rem; #{$align-opp}:2rem; }
+		&:hover, &:focus { opacity:1; }
+		&:before, &:after { position:absolute; top:0; #{$align-def}:.75rem; content:""; height:1.5rem; width:2px; background-color:$white;
+			@include media-breakpoint-up(md){ height:2rem; #{$align-def}:1rem; }
+		}
+		&:before { transform:rotate(45deg); }
+		&:after { transform:rotate(-45deg); }
+	}
+	@keyframes fadeIn {
+		0% { opacity:0; }
+		100% { opacity:1; }
+	} 
+	 
+	.bonus-box { display:flex; align-items:center; justify-content:center;
+        @include media-breakpoint-up(md){ justify-content:flex-start; }
+        @include media-breakpoint-up(lg){ justify-content:center; }  
+        .link-bonus { display:flex; align-items:center; justify-content:center; flex:1 1 100%; width:100%; max-width:20rem; height:3.25rem; padding:($spacer * .5) $spacer; margin:($spacer * .3125) ($spacer * .3125) 0; background-color:$dark-blue; color:$white; font-size:1.125rem; line-height:1.1; text-decoration:none; border:1px solid $white; border-radius:$border-radius-medium * .5; transition:all .3s linear;
+            &:hover, &:focus { background-color:$cfd-blue; }
+            [class^="icon-"] { flex:0 0 1.5rem; margin-#{$align-opp}:($spacer * .75); font-size:120%;
+                img, svg { width:100%; height:auto; }  
+            }
+            span { line-height:1; } 
+            @include media-breakpoint-up(md){ margin-#{$align-def}:0; }
+            @include media-breakpoint-up(lg){ height:4rem; max-width:40.625rem; font-size:1.25rem; margin:$spacer ($spacer * .3125) 0; }
+        }
+	} 
+} 

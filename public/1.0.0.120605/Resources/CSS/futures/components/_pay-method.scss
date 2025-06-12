@@ -1,0 +1,17 @@
+﻿.payment {
+	&-brands { margin-top:$spacer * 1.5; margin-bottom:$spacer * 1.5;
+		@include media-breakpoint-up(md){ margin-top:$spacer * 2.5; margin-bottom:$spacer * 2.5; }
+	}
+	&-brand { flex:0 0 auto; width:auto;
+		@include media-breakpoint-up(sm){ margin:0 2%; }
+		&-list { display:flex; justify-content:space-around; align-items:center; 
+			@include media-breakpoint-up(sm){ justify-content:center; }
+		}
+		&-img { position:relative; margin-bottom:0;
+			img, svg { display:block; margin:($spacer * .5) auto; width:auto; height:1.75rem;
+				@include media-breakpoint-up(sm){ height:3.5rem; }
+			}
+		}
+	}
+}
+.disclaimer-zone { color:$color-main; text-align:center; font-size:1rem; } 

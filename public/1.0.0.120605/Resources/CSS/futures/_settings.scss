@@ -1,0 +1,87 @@
+/// <reference path="_variables.scss" />
+// scss-docs-start import-stack
+// Configuration
+@import "../../../node_modules/bootstrap/scss/functions";
+$enable-shadows:              false;
+
+$font-family-base:  Roboto, Rubik, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$grid-gutter-width: .75rem;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px,
+);
+
+$container-max-widths: ( sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px );
+
+$mbp: md; // major breakpoint
+
+$container-padding-x: 1rem;
+
+$font-weight-lighter: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+$font-weight-bolder: 700;
+$font-weight-extra-bold: 800;
+$font-weight-extra-bolder: 900;
+
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+//$btn-focus-box-shadow:		null; // to override !default with null you need to overrride after the variable is declared
+//$btn-active-box-shadow:		null;
+
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+
+
+
+// 4. Include any optional Bootstrap CSS as needed
+@import "../../../node_modules/bootstrap/scss/root";
+@import "../../../node_modules/bootstrap/scss/reboot";
+@import "../../../node_modules/bootstrap/scss/type";
+@import "../../../node_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+//@import "../../../node_modules/bootstrap/scss/tables";
+@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+//@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar";
+@import "../../../node_modules/bootstrap/scss/card";
+//@import "../../../node_modules/bootstrap/scss/accordion";
+//@import "../../../node_modules/bootstrap/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/pagination";
+//@import "../../../node_modules/bootstrap/scss/badge";
+//@import "../../../node_modules/bootstrap/scss/alert";
+//@import "../../../node_modules/bootstrap/scss/progress";
+//@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+//@import "../../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal";
+//@import "../../../node_modules/bootstrap/scss/tooltip";
+//@import "../../../node_modules/bootstrap/scss/popover";
+//@import "../../../node_modules/bootstrap/scss/carousel";
+//@import "../../../node_modules/bootstrap/scss/spinners";
+//@import "../../../node_modules/bootstrap/scss/offcanvas";
+//@import "../../../node_modules/bootstrap/scss/placeholders";
+
+// Helpers
+@import "../../../node_modules/bootstrap/scss/helpers";
+
+// Utilities
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+// scss-docs-end import-stack

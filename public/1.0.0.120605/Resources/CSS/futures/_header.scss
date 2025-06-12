@@ -1,0 +1,158 @@
+// Header
+@mixin activeStateMenuItem {
+	> ul { @include media-breakpoint-up(xl){ display:block; box-shadow:0 3.125rem 3.125rem scale-color(#08143C, $alpha:-35%); } }
+	.icon-chevron { @include media-breakpoint-up(xl){ background-image:svg-encode($menu-chevron-down-hover) } }
+	.menu-link {
+		@include media-breakpoint-up(xl){ background-color:$dark-blue; border-radius:.5rem .5rem 0 0; color:$light-green; box-shadow:0 0 3.125rem scale-color($cfd-blue, $alpha:-64%); }
+		.blue-header & { @include media-breakpoint-up(xl){ color:$light-green; } }
+	}
+	&.no-hover-link a {
+		@include media-breakpoint-up(xl){ background-color:transparent; color:$light-blue; box-shadow:none; }
+		.blue-header & { @include media-breakpoint-up(xl){ color:$light-blue; } }
+	}
+	.dropdown-menu-languages { left:auto; right:0; border-radius:5px 0 0 0;
+			&.show { display:block; }
+	}
+}
+
+// Header
+.main-header { position:fixed; top:0; width:100%; z-index:$zindex-sticky + 1;
+	@supports (position:sticky){ position:sticky;
+		.edge & { position:fixed;  // Edge 16-18 has issues with position sticky although it's supported
+			+ .sentinel { height:3.65rem;
+				@include media-breakpoint-up(xl){ height:4.5rem; }
+			}
+		}
+	}
+	&-wrapper { border-radius:0 0 .75rem .75rem; background-color:scale-color($white, $alpha:-30%);
+		@supports ((-webkit-backdrop-filter:none) or (backdrop-filter:none)) { backdrop-filter:blur(.75rem); }
+		.blue-header & { background-color:#004080; border-radius:0; }
+	}
+	.main-column { align-items:center; display:flex; padding-bottom:$spacer * .25; padding-top:$spacer * .25; position:relative;
+		@include media-breakpoint-up(xl) { padding-bottom:$spacer * .5; padding-top:$spacer * .75; }
+		&:before { content:""; background-image:url("../../images/futures/img/header-background-us.webp"); background-repeat:no-repeat; background-size:cover; position:absolute; left:0; top:0; width:100%; height:100%; opacity:.2; z-index:-1;
+			@include media-breakpoint-up(xl) { background-size:contain; background-position:10%;  }
+			#{$old-browsers-classes} { background-image:url("../../images/futures/img/header-background-us.png"); }
+		}
+	}
+	.switcher-row { padding:0; position:relative; width:100%; } // special row for product switcher
+	.logo { display:flex; align-items:flex-end; flex-direction:rtlFlip(row, row-reverse); justify-content:rtlFlip(flex-start, flex-end); flex:0 0 auto;
+		@include media-breakpoint-down(xl) { margin-#{$align-opp}:auto; padding-bottom:$spacer * .5; }
+		.menu-link { display:flex;
+			@include media-breakpoint-up(xl) { margin-bottom:$spacer * .75; }
+		 	svg { max-width:8rem;
+				@include media-breakpoint-up(xl) { max-width:10rem; }
+			}
+		}
+	 	&-color-1 { fill:$color-sub-brand-cfd;
+            .blue-header & { fill:$white; }
+        } 
+        &-color-2 { fill:$color-sub-brand-cfd; stroke:none;
+            .blue-header & { fill:$white; }
+        }
+	}
+	.mobile-menu-trigger { appearance:none; background-color:transparent; border:none; padding:0;
+		@include media-breakpoint-up(xl) { display:none; }
+		&:before { display:none; } // remove old style icon
+		&:hover, &:focus { cursor:pointer; }
+		&-icon { align-items:center; flex-direction:column; justify-content:center; height:2rem; display:flex; padding:0 ($spacer * .25); width:2rem; overflow:hidden; 
+			&:before, &:after { content:''; display:flex; height:2px; width:100%; background-color:$cfd-blue; transform-origin:rtlFlip(left, right); transition:transform .3s ease-in-out;
+				.blue-header & { background-color:$white; }
+			}
+			&:before { transform:translateY(-6px); }
+			&:after { transform:translateY(6px); }
+			span { display:flex; height:2px; background-color:$cfd-blue; transition:opacity .25s ease-in; opacity:1; width:100%;
+				.blue-header & { background-color:$white; }
+			}
+		}
+		&.is-open {
+			.mobile-menu-trigger-icon {
+				&:before, &:after { justify-self:flex-start; width:1.5rem; }
+				&:before { transform:translate(rtlFlip(3px, -3px), -6px) rotate(rtlFlip(45deg, -45deg)); }
+				&:after { transform:translate(rtlFlip(3px, -3px), 7px) rotate(rtlFlip(-45deg, 45deg)); }
+				span { opacity:0; transition-timing-function:ease-out; }
+			}
+		}
+	}
+	.start-trading-link{ 
+		&-box { display:none; text-align:center; margin-#{$align-def}:$spacer; margin-#{$align-opp}:0;
+			@include media-breakpoint-up(xl){ display:block; }
+		}
+		&.button { font-size:1rem; padding:($spacer * .625) $spacer;  margin-top:0; max-width:12.5rem; height:auto; }
+	}
+}
+
+// Menu
+.main-menu { box-shadow:0 3.125rem 3.125rem scale-color(#08143C, $alpha:-35%); position:absolute; top:100%; width:100%; left:0; right:0;
+	@media (orientation:landscape) and (max-width:75rem) { max-height:calc(100% + 70vh); overflow-y:auto; }
+	@include media-breakpoint-up(xl){ box-shadow:none; flex:1 0 auto; position:static; top:0; width:auto; }
+	ul, li { list-style:none; margin:0; padding:0; }
+	ul { flex-direction:column; flex-wrap:nowrap; overflow:hidden; background-color:$dark-blue; width:100%;
+		@include media-breakpoint-up(xl){ overflow:visible; border-radius:rtlFlip(0 .5rem .5rem .5rem, .5rem 0 .5rem .5rem); }
+	}
+	> ul { display:flex; height:0; position:relative; transition:height .3s ease;
+		@include media-breakpoint-up(xl){ position:static; flex-direction:row; align-items:center; height:auto !important; background-color:transparent; transition:none;
+			// center the menu on large by pushing first level list items (first and the 3rd)
+			> li {
+				&:first-child { margin-#{$align-def}:auto; }
+				&:only-child { margin-left:auto; margin-right:auto; }
+			}
+		}
+	}
+	li {
+		@include media-breakpoint-up(xl){ position:relative; }
+ 		.icon-chevron { background-image:svg-encode(rtlFlip($chevron-left,$chevron-right)); background-repeat:no-repeat; background-position:50%; width:1rem; height:1rem; margin-#{$align-def}:$spacer * .25; opacity:1;
+			@include media-breakpoint-up(xl){ background-image:svg-encode($menu-chevron-down); opacity:.5; }
+			.blue-header & {
+                @include media-breakpoint-up(xl){ background-image:svg-encode($menu-chevron-down-white); }
+            }
+		}
+		a { font-size:.9375rem; position:relative; padding:($spacer * .5) ($spacer * .9375); color:$white; display:flex; text-decoration:none; z-index:1; }
+		ul { width:100%; transform:translateX(rtlFlip(-100%, 100%)); transition:transform .3s ease; position:absolute; top:0; z-index:2;
+			@include media-breakpoint-up(xl){ #{$align-def}:0; min-width:13rem; padding-top:$spacer * .5; padding-bottom:$spacer * .5; transform:none; transition:none; top:100%; width:auto; }
+			@include media-breakpoint-only(xl){ max-height:66.677vh; overflow-x:hidden; }
+			> li { padding:($spacer * .25) ($spacer * .5);
+				&:hover { background-color:scale-color($white, $alpha:-76%); }
+				a { display:block; padding:.25em; line-height:1.2;}
+				&.separator { background-color:transparent; border-top:1px solid scale-color($dark-blue, $saturation:-55%, $lightness:64%); padding-bottom:$spacer *.375; margin-top:$spacer * .75;
+					&.no-border { border-top:none;
+						~ li:last-child { margin-bottom:$spacer * .75; } // target last child of the current selector
+					}
+					span { color:scale-color($dark-blue, $saturation:-55%, $lightness:64%); display:block; font-weight:$font-weight-medium; font-size:.8125rem; padding:$spacer * .25;
+						@include media-breakpoint-up(xl){ font-size:.75rem; }
+					}
+				}
+				&.category-separator span { color:$light-green; }
+			}
+		}
+	}
+	.back-link { border:none; background-color:scale-color($white, $alpha:-76%); display:flex; align-items:center; color:$light-green; font-size:.9375rem; padding:$spacer * .5; margin:0; width:100%; appearance:none;
+		&:before { border-style:solid; border-width:rtlFlip(6px 6px 6px 0, 6px 0 6px 6px); border-color:rtlFlip(transparent $light-green transparent transparent, transparent transparent transparent $light-green); margin-#{$align-opp}:$spacer * .75; width:0; height:0;  content:''; }
+		&-wrapper { padding:0;
+			@include media-breakpoint-up(xl){ display:none; } // hide for desktop
+		}
+	}
+	.menu-link { display:flex; align-items:center; white-space:nowrap;
+		@include media-breakpoint-up(xl){ color:$dark-blue; }
+		&[type="button"] { background-color:transparent; border:none; color:$white; margin:0;  padding:($spacer * .5) ($spacer * .9375); width:100%; appearance:none;
+			@include media-breakpoint-up(xl){ color:$dark-blue; }
+		}
+		&:first-letter { text-transform:uppercase; }
+		.blue-header & { color:$white; }
+		.lang-en & { text-transform:uppercase; }
+		span { pointer-events:none; } // prevent any event from here
+	}
+	// Open submenu on mobile
+	.submenu { display:flex; transform:translateX(0); }
+	// Open submenu on desktop
+	.has-submenu {
+		> ul { @include media-breakpoint-up(xl){ display:none; } }
+		&:hover, &:focus-within  { @include activeStateMenuItem; }
+		[type="button"]:focus-visible { outline-offset:-2px; }
+	}
+	.link-login { @include media-breakpoint-up(xl){ margin-#{$align-def}:auto; margin-#{$align-opp}:0; } }
+}
+
+.dropdown-toggle-languages { --bs-nav-link-color:#{$white}; color:var(--bs-nav-link-color); text-transform: uppercase;
+	@include media-breakpoint-up(lg){ --bs-nav-link-color:#{$dark-blue};}
+}

@@ -1,0 +1,12 @@
+// Mixins
+@mixin styled-scrollbar(){
+	@media (hover: hover) and (pointer: fine) {
+		&::-webkit-scrollbar {  background-color:transparent; }
+		&::-webkit-scrollbar-track { background-color: transparent; margin:($spacer * .25) 0; border-radius: 0 0 $border-radius-large $border-radius-large;  }
+		&::-webkit-scrollbar-thumb { background: $dark-blue; border:2px solid $white; border-radius: $border-radius-large; }
+	}
+}
+@mixin rm-click-hint {
+	//FYI: remove annoying tap hinting on touch devices (Mainly android)
+	@media (pointer:coarse) { -webkit-tap-highlight-color: transparent;	}
+}

@@ -1,0 +1,21 @@
+﻿$sponsorshipType: "futures";
+@import "common";
+@import "header";
+main { padding-bottom: 4rem; overflow: hidden; }
+@import "components/hero";
+@import "components/market-menu";
+@import "components/pay-method";
+@import "../shared/trustpilot";
+@import "components/trading-icons";
+@import "components/academy-card";
+@import "components/futures";
+@import "components/solutions";
+@import "components/brands";
+@import "components/technology";
+@import "components/companies";
+@import "components/trade";
+@import "components/faq";
+@import "components/why-us";
+@import "../shared/sponsorship"; 
+@import "components/subscribe";
+@import "footer";

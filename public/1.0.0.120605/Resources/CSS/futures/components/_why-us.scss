@@ -1,0 +1,13 @@
+.why-us {
+  &-section { margin-bottom: $spacer * 10;
+    @include media-breakpoint-up(md) { margin-bottom: $spacer * 15; }
+    .plus-bg { 
+        &-large { width: 10.5rem; height: 10.5rem; top:96%; #{$align-def}: 8rem; 
+            @include media-breakpoint-up(md) { width: 15.375rem; height: 15.375rem; top:80%; #{$align-def}: -10rem; }
+        }
+      }
+  }
+  &-items { padding-left:0;  padding-right:0;
+    @include media-breakpoint-up(lg) { padding-left:var(--bs-gutter-x,$spacer); padding-right:var(--bs-gutter-x,$spacer); }
+  }
+}

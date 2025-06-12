@@ -1,0 +1,25 @@
+﻿.faq {
+	&-section { margin:($spacer * 2.5) auto;
+		@include media-breakpoint-up(md){ margin:($spacer * 4) auto; }
+	}
+	&-accordion {
+		.accordion {
+			&-item { background-color:$white; border:none; border-bottom:2px solid $dark-blue; font-weight:$font-weight-light;
+				&:last-of-type { border-radius:0; }
+				&:hover { border-color:$light-blue; }
+			}
+			&-button { font-size:1.125rem; font-weight:$font-weight-regular; margin:0; padding-top:$spacer * 1.5; padding-bottom:$spacer * 1.25; padding-#{$align-def}:1rem; padding-#{$align-opp}:$spacer * 3; color:$dark-blue; text-align:#{$align-def}; background-color:transparent; position:relative; display:flex; align-items:center; width:100%; border:none; 
+				@include media-breakpoint-up(md){ font-size:1.75rem; font-weight:$font-weight-light; padding-top:$spacer * 2.25}
+				&:not(.collapsed) { background-color:transparent; font-weight:$font-weight-bolder; box-shadow:none; 
+					&:after { content:"–"; transform:rotate(0); box-shadow:none; }
+				}
+				&:after { content:"+"; position:absolute; #{$align-opp}:1rem; top:50%; width:1rem; height:2rem; margin-top:-$spacer; font-weight:$font-weight-light; font-size:1.5rem; text-align:center; background-image:none;
+					@include media-breakpoint-up(md){ font-size:1.75rem; margin-top:($spacer * -.5); font-weight:$font-weight-regular; }
+				}
+				&:focus { box-shadow:none; }
+				&:hover { color:$light-blue; }
+			}
+			&-body { padding:($spacer * .25) $spacer ($spacer * 1.5); font-size:1.125rem; }
+		}
+	}
+} 

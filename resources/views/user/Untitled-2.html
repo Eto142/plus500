@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Modal Sequence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .language {
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .language img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .language:hover {
+            transform: scale(1.1);
+            transition: 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- First Modal -->
+    <div id="firstModal" class="modal">
+        <div class="modal-content">
+            <h2>First Modal - Display for 30 seconds</h2>
+            <p>This modal will close after 30 seconds.</p>
+        </div>
+    </div>
+
+    <!-- Second Modal -->
+    <div id="secondModal" class="modal">
+        <div class="modal-content">
+            <h2>Form Selection Modal 1</h2>
+            <form id="form1">
+                <div class="languages">
+                    <div class="language">
+                        <img src="flags/arabic.png" alt="Arabic"> Arabic
+                    </div>
+                    <div class="language">
+                        <img src="flags/bengali.png" alt="Bengali"> Bengali
+                    </div>
+                    <div class="language">
+                        <img src="flags/chinese.png" alt="Chinese"> Chinese
+                    </div>
+                    <div class="language">
+                        <img src="flags/czech.png" alt="Czech"> Czech
+                    </div>
+                    <div class="language">
+                        <img src="flags/german.png" alt="German"> German
+                    </div>
+                    <div class="language">
+                        <img src="flags/english.png" alt="English"> English
+                    </div>
+                    <div class="language">
+                        <img src="flags/spanish.png" alt="Spanish"> Spanish
+                    </div>
+                    <div class="language">
+                        <img src="flags/estonian.png" alt="Estonian"> Estonian
+                    </div>
+                    <div class="language">
+                        <img src="flags/french.png" alt="French"> French
+                    </div>
+                    <div class="language">
+                        <img src="flags/hindi.png" alt="Hindi"> Hindi
+                    </div>
+                    <div class="language">
+                        <img src="flags/croatian.png" alt="Croatian"> Croatian
+                    </div>
+                    <div class="language">
+                        <img src="flags/armenian.png" alt="Armenian"> Armenian
+                    </div>
+                </div>
+                <button type="button" onclick="nextModal()">Next</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Third Modal -->
+    <div id="thirdModal" class="modal">
+        <div class="modal-content">
+            <h2>Form Selection Modal 2</h2>
+            <form id="form2">
+                <label for="option2">Choose another option:</label>
+                <select id="option2">
+                    <option value="A">Option A</option>
+                    <option value="B">Option B</option>
+                </select>
+                <button type="button" onclick="nextModal()">Next</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Fourth Modal -->
+    <div id="fourthModal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome!</h2>
+            <p>This is the final welcome message modal, which will close after 30 seconds.</p>
+        </div>
+    </div>
+
+    <script>
+        function showModal(id, delay, next) {
+            var modal = document.getElementById(id);
+            modal.style.display = "block";
+            setTimeout(function() {
+                modal.style.display = "none";
+                if (next) next();
+            }, delay);
+        }
+
+        function nextModal() {
+            var current = document.querySelector(".modal[style*='block']");
+            current.style.display = "none";
+            var next = current.nextElementSibling;
+            if (next && next.classList.contains("modal")) next.style.display = "block";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            showModal("firstModal", 5000, function() {
+                document.getElementById("secondModal").style.display = "block";
+            });
+
+            document.getElementById("secondModal").querySelector("button").onclick = function() {
+                nextModal();
+            };
+
+            document.getElementById("thirdModal").querySelector("button").onclick = function() {
+                nextModal();
+                setTimeout(() => showModal("fourthModal", 30000), 500);
+            };
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+// fonts folder is in css/futures/fonts folder
+$hash:"rxtjs5"; // change this on new set change ( download from icomoon ) 
+@import "variables";
+
+@font-face {
+	font-family:"#{$icomoon-font-family}";
+	src:url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?#{$hash}") format("woff2"),
+	url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?#{$hash}") format("truetype"),
+	url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?#{$hash}") format("woff");
+	font-weight:normal;
+	font-style:normal;
+	font-display:block;
+}
+
+// special cases for icons
+[class^="icon-"]:before, [class*=" icon-"]:before, [class^="icon-"]:after, [class*=" icon-"]:after {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family:"#{$icomoon-font-family}" !important;
+	speak:never;
+	font-style:normal;
+	font-weight:normal;
+	font-variant:normal;
+	text-transform:none;
+	line-height:1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.icon-mail-fill {
+  &:before {
+    content: $icon-mail-fill; 
+  }
+}
+.icon-mail {
+  &:before {
+    content: $icon-mail; 
+  }
+}
+.icon-bonus {
+  &:before {
+    content: $icon-bonus; 
+  }
+}
+.icon-file-pdf {
+  &:before {
+    content: $icon-file-pdf; 
+  }
+}
+.icon-chat {
+  &:before {
+    content: $icon-chat; 
+  }
+}
+.icon-users {
+  &:before {
+    content: $icon-users; 
+  }
+}
+.icon-play3 {
+  &:before {
+    content: $icon-play3; 
+  }
+}
+.icon-chevron-up {
+  &:before {
+    content: $icon-chevron-up; 
+  }
+}
+.icon-chevron-right {
+  &:before {
+    content: $icon-chevron-right; 
+  }
+}
+.icon-chevron-down {
+  &:before {
+    content: $icon-chevron-down; 
+  }
+}
+.icon-chevron-left {
+  &:before {
+    content: $icon-chevron-left; 
+  }
+}
+.icon-circle-arrow-right {
+  &:before {
+    content: $icon-circle-arrow-right; 
+  }
+}
+.icon-circle-arrow-left {
+  &:before {
+    content: $icon-circle-arrow-left; 
+  }
+}
+.icon-circle-arrow-right2 {
+  &:before {
+    content: $icon-circle-arrow-right2; 
+  }
+}
+.icon-circle-arrow-left2 {
+  &:before {
+    content: $icon-circle-arrow-left2; 
+  }
+}
+.icon-futures-interestrates {
+  &:before {
+    content: $icon-futures-interestrates; 
+  }
+}
+.icon-futures-forex {
+  &:before {
+    content: $icon-futures-forex; 
+  }
+}
+.icon-futures-metals {
+  &:before {
+    content: $icon-futures-metals; 
+  }
+}
+.icon-futures-agriculture {
+  &:before {
+    content: $icon-futures-agriculture; 
+  }
+}
+.icon-futures-crypto {
+  &:before {
+    content: $icon-futures-crypto; 
+  }
+}
+.icon-futures-energy {
+  &:before {
+    content: $icon-futures-energy; 
+  }
+}
+.icon-futures-equityindices {
+  &:before {
+    content: $icon-futures-equityindices; 
+  }
+}
+.icon-futures-articles {
+  &:before {
+    content: $icon-futures-articles; 
+  }
+}
+.icon-futures-video {
+  &:before {
+    content: $icon-futures-video; 
+  }
+}
+.icon-futures-strategies {
+  &:before {
+    content: $icon-futures-strategies; 
+  }
+}
+.icon-futures-plus {
+  &:before {
+    content: $icon-futures-plus; 
+  }
+}
+.icon-futures-benefits {
+  &:before {
+    content: $icon-futures-benefits; 
+  }
+}
+.icon-icon-IBs {
+  &:before {
+    content: $icon-icon-IBs; 
+  }
+}

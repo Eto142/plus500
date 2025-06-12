@@ -1,0 +1,38 @@
+﻿.academy {
+  	&-card { position: relative; z-index: 0; max-width: 1200px; margin-top: $spacer * 5; 
+			@include media-breakpoint-down(lg) { padding: 0; }
+			.plus-bg { display: none; z-index: -1;
+					 &-medium { width:12.5rem; height: 12.5rem; top:-12%; #{$align-def}:-5%;
+						@include media-breakpoint-up(xl) { display: block; } 
+					  } 
+					  &-large { width:22.5rem; height: 22.5rem; top:20%; #{$align-opp}:-15%;
+						@include media-breakpoint-up(xl) { display: block; } 
+					  }  
+				} 
+			.title-section { font-size: 1.625rem; text-transform: none; margin-bottom: $spacer; font-weight: $font-weight-regular;
+				@include media-breakpoint-up(md) { font-size: 2rem; font-weight: $font-weight-light; }
+			}
+			.blue-card-parent { padding-top: $spacer * 12; padding-bottom: $spacer * 4;
+				@include media-breakpoint-up(md) { padding-top: $spacer * 2; }
+			 }
+		 	.blue-card-content { padding-top: $spacer * 1.5; padding-bottom: $spacer; }
+			.blue-card-bg {
+				&:after { background-image: linear-gradient(to bottom,scale-color($dark-blue, $alpha: -100%) 10rem, $dark-blue 14rem) , url("../../Images/futures/img/knowledge-card.webp"); background-position: 50%, 100% 0; background-size: 120% auto; background-repeat: no-repeat; 
+					#{$old-browsers-classes} { background-image: linear-gradient(to bottom,scale-color($dark-blue, $alpha: -100%) 10rem, $dark-blue 14rem) , url("../../Images/futures/img/knowledge-card.png"); } 
+					@include media-breakpoint-up(md) { background: $dark-blue url("../../Images/futures/img/knowledge-card.webp"); background-position: right -12rem top 50%; background-size: auto 100%; background-repeat: no-repeat; 
+						#{$old-browsers-classes} { background-image: url("../../Images/futures/img/knowledge-card.png"); } 
+					}
+				}
+			}
+		  }
+	&-content { 
+		@include media-breakpoint-down(lg) { padding-left: $spacer * 2; padding-right: $spacer * 2; }
+	}
+	&-logo { height: 1.5rem; margin-bottom: $spacer; }
+	&-title-icon { 
+	  img, svg { height: 7.5rem; }
+	} 
+}
+.trading-section + .academy-card { margin-top: $spacer * 4.5; 
+	@include media-breakpoint-up(lg) { margin-top: $spacer * -8.25; }
+}

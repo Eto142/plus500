@@ -1,0 +1,150 @@
+﻿ //Futures
+.futures { 
+  &-section { position: relative;  margin-bottom: $spacer * 3;
+    @include media-breakpoint-down(md) { z-index: 1; }
+    @include media-breakpoint-up(md) { margin-bottom: $spacer * 5; }
+    @include media-breakpoint-up(xl) { margin-top: $spacer * 18; margin-bottom: $spacer * 18; }
+    .plus-bg {
+      &-small { width: 5.375rem; height: 5.375rem; top:6%; #{$align-def}:4%; display: none;
+          @include media-breakpoint-up(md) { top:100%; #{$align-def}:2%; display: block; }
+      }
+      &-medium { width: 9.125rem; height: 9.125rem; top:100%; #{$align-opp}:-14%;
+          @include media-breakpoint-up(md) { top:90%; }
+          @include media-breakpoint-down(md) { display: none; } 
+       }
+        &-large { width: 9.75rem; height: 9.75rem; top:100%; #{$align-opp}:2%;
+          @include media-breakpoint-up(md) { top:0; }
+          @include media-breakpoint-down(md) { display: none; } 
+       }
+      &-xlarge { width:40.25rem; height: 40.25rem; top:-18%; #{$align-def}:-24%;  
+        @include media-breakpoint-down(md) { display: none; } 
+      }
+    } 
+    
+    .blue-card-parent { padding-top: $spacer * 2; padding-bottom: $spacer * 2; 
+        @include media-breakpoint-up(xl) { padding-bottom: $spacer * 12; }
+    } 
+    .blue-card-bg {
+        @include media-breakpoint-down(xl) { display: none; }
+    }
+     .blue-card-bg.white-bg:before { background-image: linear-gradient(90deg, $white 0%, $dark-blue 20%); }
+  }
+  &-data { display: flex; flex-direction: column; align-items: center;
+      @include media-breakpoint-up(xl){ display:block; }
+   } 
+  &-slogan{ color:$dark-blue; font-size: 1.125rem;
+        @include media-breakpoint-up(md){ font-size: 1.375rem; }
+  }
+  &-logo { max-width: 12rem; margin: 0 auto $spacer; 
+      img { display: block; width: 100%; height: auto; }
+  }
+  &-content { margin-top:$spacer * -13.5; padding-top:$spacer * 4; text-align:center; color:$text-color; position:relative; z-index:1; order:1; width:100%; overflow:hidden;
+     @include media-breakpoint-up(xl){ margin-top:$spacer * -7; padding-top:$spacer * 8; padding-#{$align-def}:8%; padding-#{$align-opp}:34%; padding-bottom:$spacer; }
+     @include media-breakpoint-up(xxl){ padding-#{$align-def}:8%; padding-#{$align-opp}:30%; }
+    &-big { font-size: 1.625rem; color:$dark-blue; font-weight: $font-weight-extra-bold;
+        @include media-breakpoint-up(md){ font-size: 1.875rem; }
+    }
+  }
+  &-desc { font-size: 1rem; }
+  &-link {
+      color: $dark-blue; text-decoration: underline; margin-top: 0;
+      &:after { content:''; background-image: $menu-chevron-down; transform: rotate(rtlFlip(-90deg,90deg)); background-repeat: no-repeat; background-position: 50%; width: 1rem; height: 1rem; margin-#{$align-def}: .25rem; opacity: 1; }
+      &:hover, &:focus { text-decoration: none; }
+  }
+  &-image {
+      @include media-breakpoint-down(xl) { position: relative; order: 0; top:0;
+          img { max-width: 20rem; }
+          &:after { content:''; position: absolute; bottom: 0; left:0; right:0; width: 100%; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 40%,rgba(255,255,255,1) 80%); }
+       }
+      @include media-breakpoint-up(xl) { position: absolute; top:-10%; #{$align-opp}:-14%; }
+      @include media-breakpoint-down(xxl) { max-width: 30rem; }
+      &-wrap {
+        @include media-breakpoint-down(xl) { position: relative; display: flex; }   
+      }
+  }
+  .dark-mode-img { opacity: 0; transition: opacity .5s; } 
+  .mode-switcher-input {  
+      + label { cursor: pointer; background-color: $white; position: absolute; z-index: 1; bottom: 35%; #{$align-opp}:50%; transform: translateX(50%); margin: 0 auto; height: 2.25rem; display: inline-flex; flex-direction: column; border-radius: $border-radius-large; transition: all .5s;
+        box-shadow: 0 37px 48px rgba(24, 74, 181, 0.34);
+        @include media-breakpoint-up(md) { height: 3.25rem; }
+        @include media-breakpoint-up(xl) { #{$align-opp}:2%; transform: none; }
+        span { white-space: nowrap; color:$medium-blue; line-height: 2.25; padding: 0 $spacer; transition: all 0.5s; 
+          @include media-breakpoint-up(md) { line-height: 3.25; }
+        }
+        .mode-icon { position: absolute; #{$align-def}:0; width: 2.25rem; height: 2.25rem; border-radius: 50%; border:.125rem solid transparent; background-color: $medium-blue; background-clip: padding-box; transition: all .5s;
+          @include media-breakpoint-up(md) { width: 3.25rem; height: 3.25rem; }
+           &:before, &:after { content:'';  display: block; height: 100%; background-repeat: no-repeat; background-position: 50% 50%; background-size: auto 70%; transition: opacity .5s;
+                  @include media-breakpoint-up(md) { background-size: auto; }
+           }
+           &:before { background-image: url("../../images/futures/svg/icon-lightmode.svg"); }
+           &:after { background-image: url("../../images/futures/svg/icon-darkmode.svg"); margin-top: -100%; opacity: 0; }
+        }
+        .mode-light { margin-#{$align-def}: $spacer * 1.75; 
+             @include media-breakpoint-up(md) { margin-#{$align-def}: $spacer * 2.75; }
+        } 
+        .mode-dark { margin-#{$align-opp}: $spacer * 1.75; margin-top: $spacer * -2.25; opacity: 0; 
+            @include media-breakpoint-up(md) { margin-top: -3.25rem; margin-#{$align-opp}: $spacer * 2.75; }
+        }
+        ~ .dark-mode-img { 
+            @include media-breakpoint-down(xl) { position: absolute; }
+        }
+      }
+      &:checked {
+        + label {
+          .mode-icon { #{$align-def}:100%; transform: translateX(-100%); 
+              &:before { opacity: 0; }
+              &:after { opacity: 1; }
+          }
+          .mode-light { opacity: 0; }
+          .mode-dark { opacity: 1; }
+        }
+        ~ .dark-mode-img { opacity: 1; 
+            @include media-breakpoint-down(xl) { position: relative; }
+        } 
+        ~ .light-mode-img { opacity: 0; 
+            @include media-breakpoint-down(xl) { position: absolute; }
+        }
+      }
+  } 
+  .application-stores { display: flex; justify-content: center; align-items: center; flex-direction: column;
+      @include media-breakpoint-up(sm) { flex-direction: row; }
+      .store-link { width: 13.375rem; max-width: 100%; height: 3.5rem; background-repeat: no-repeat; background-position: 50%; background-size: contain; flex: 0 1 auto; 
+        &.link {  
+          &-play-store { height: 5.5rem; }
+          &-app-store { height: 3.875rem;
+              @include media-breakpoint-up(sm) { height: 3.5rem;  }
+          }
+      } 
+    }
+  }
+  
+  .slick-list { overflow: hidden; max-width: 100%; max-height: 10rem; }
+  .slick-track { position: relative; }
+  .slick-dots { list-style: none; margin: 0; padding: 0; width: 100%;
+       li { position: relative; display: inline-block; width: 1rem; height: 1rem; margin: $spacer * .5; padding: 0; cursor: pointer; 
+         &.slick-active {
+            button { background-color: $medium-blue; }
+         }
+       }
+       button { font-size: 0; line-height: 0; display: block; width: .625rem; height: .625rem; padding: 0; margin: 0 auto; cursor: pointer; color: transparent; border: 0; outline: none; 
+                border-radius: 50%; background-color: #ABA9A9;
+       }
+   }
+  &-slider { width: 100%; max-width:100%; margin: ($spacer * 1.5) auto; position: relative;
+      @include media-breakpoint-up(sm) { max-width: 36.25rem; }
+      &:before, &:after { content: ""; position:absolute; z-index:2; width:1.5rem; height:100%; 
+            @include media-breakpoint-up(sm) { width:2.5rem; }
+      }
+      &:before { top:0; left:0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
+      &:after { top:0; right:0; background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); }
+      &-slide { float: #{$align-def}; 
+          &-image {
+            img { display: block; margin: 0 auto; height: auto; width: 5rem; max-height: 4rem; }
+          }
+          &-title { color: $dark-blue; font-size: 1.125rem; padding: ($spacer * .5) 5%; 
+               @include media-breakpoint-up(md) { font-size: 1.25rem; }
+          }
+      }
+  }
+  
+}
